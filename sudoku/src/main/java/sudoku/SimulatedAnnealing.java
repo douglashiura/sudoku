@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class SimulatedAnnealing {
 	private static final Random RANDOM = new Random();
-	private float cooling = 0.0000001f;
-	private double temperature = 1000000.0d;
+	private float cooling = 0.998f;
+	private double temperature = 10000000000000000000000.0d;
 
 	public SimulatedAnnealingSudoku simulate(SimulatedAnnealingSudoku currentSolution) {
 		SimulatedAnnealingSudoku best = currentSolution.newClone();
