@@ -5,14 +5,14 @@ import java.util.Random;
 public class SimulatedAnnealingSudoku {
 	private static final Random RANDOM = new Random();
 	public int[][] board;
-	public boolean[][] fixed;
+	public boolean[][] fixedTiles;
 	public SimulatedAnnealingSudoku(int[][] input) {
 		board = input;
 		startCandidates();
 	}
 	private  SimulatedAnnealingSudoku(int[][] cloneBoard, boolean[][] fixed) {
 		this.board = cloneBoard;
-		this.fixed = fixed;
+		this.fixedTiles = fixed;
 	}
 
 	public int costFunction() {
@@ -39,10 +39,10 @@ public class SimulatedAnnealingSudoku {
 	}
 
 	private void startCandidates() {
-		fixed = new boolean[9][9];
+		fixedTiles = new boolean[9][9];
 		for (int row = 0; row < 9; row++) {
 			for (int column = 0; column < 9; column++) {
-				fixed[row][column] = board[row][column] != 0;
+				fixedTiles[row][column] = board[row][column] != 0;
 			}
 		}
 		for (int row = 0; row < 9; row++) {
@@ -61,12 +61,12 @@ public class SimulatedAnnealingSudoku {
 
 	public void swap(int row, int column) {
 		int lr = row / 3, cr = column / 3;
-		while (fixed[row][column]) {
+		while (fixedTiles[row][column]) {
 			row = RANDOM.nextInt(3) + lr * 3;
 			column = RANDOM.nextInt(3) + cr * 3;
 		}
 		int rowTwo = row, columnTwo = column;
-		while (fixed[rowTwo][columnTwo]) {
+		while (fixedTiles[rowTwo][columnTwo]) {
 			rowTwo = RANDOM.nextInt(3) + lr * 3;
 			columnTwo = RANDOM.nextInt(3) + cr * 3;
 		}
@@ -98,7 +98,7 @@ public class SimulatedAnnealingSudoku {
 	}
 
 	public SimulatedAnnealingSudoku newClone() {
-		return new SimulatedAnnealingSudoku(cloneBoard(), fixed);
+		return new SimulatedAnnealingSudoku(cloneBoard(), fixedTiles);
 	}
 
 }
