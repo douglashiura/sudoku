@@ -1,4 +1,4 @@
-package sudoku;
+package sudoku.four;
 
 public class FourSudokuRecursive {
 private final int SIZE=4;
