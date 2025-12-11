@@ -6,6 +6,7 @@ public class SimulatedAnnealingSudoku {
 	private static final Random RANDOM = new Random();
 	public int[][] board;
 	public boolean[][] fixedTiles;
+	private final static int SIZE=9;
 	public SimulatedAnnealingSudoku(int[][] input) {
 		board = input;
 		startCandidates();
@@ -59,17 +60,21 @@ public class SimulatedAnnealingSudoku {
 		}
 	}
 
-	public void swap(int row, int column) {
-		int lr = row / 3, cr = column / 3;
-		while (fixedTiles[row][column]) {
-			row = RANDOM.nextInt(3) + lr * 3;
-			column = RANDOM.nextInt(3) + cr * 3;
-		}
-		int rowTwo = row, columnTwo = column;
-		while (fixedTiles[rowTwo][columnTwo]) {
-			rowTwo = RANDOM.nextInt(3) + lr * 3;
-			columnTwo = RANDOM.nextInt(3) + cr * 3;
-		}
+	public void swap() {
+		int row;
+		int column;
+		do {
+			row = RANDOM.nextInt(SIZE);
+			column = RANDOM.nextInt(SIZE);
+
+		} while (fixedTiles[row][column]);
+
+		int rowTwo;
+		int columnTwo;
+		do {
+			rowTwo = RANDOM.nextInt(SIZE);
+			columnTwo = RANDOM.nextInt(SIZE);
+		} while (fixedTiles[rowTwo][columnTwo]);
 		int swp = board[row][column];
 		board[row][column] = board[rowTwo][columnTwo];
 		board[rowTwo][columnTwo] = swp;

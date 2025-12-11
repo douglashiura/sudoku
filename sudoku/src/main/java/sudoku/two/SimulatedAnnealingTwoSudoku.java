@@ -1,18 +1,21 @@
-package sudoku.four;
+package sudoku.two;
 
 import java.util.Random;
 
-public class SimulatedAnnealingFourSudoku {
+import sudoku.BoardPrinter;
+
+public class SimulatedAnnealingTwoSudoku {
 	private static final Random RANDOM = new Random();
 	public int[][] board;
 	public boolean[][] fixedTiles;
-	private static final int SIZE =4;
-	
-	public SimulatedAnnealingFourSudoku(int[][] input) {
+	private static final int SIZE = 2;
+
+	public SimulatedAnnealingTwoSudoku(int[][] input) {
 		board = input;
 		startCandidates();
 	}
-	private  SimulatedAnnealingFourSudoku(int[][] cloneBoard, boolean[][] fixed) {
+
+	private SimulatedAnnealingTwoSudoku(int[][] cloneBoard, boolean[][] fixed) {
 		this.board = cloneBoard;
 		this.fixedTiles = fixed;
 	}
@@ -59,6 +62,7 @@ public class SimulatedAnnealingFourSudoku {
 				}
 			}
 		}
+		BoardPrinter.print(board);
 	}
 
 	public void swap() {
@@ -82,13 +86,9 @@ public class SimulatedAnnealingFourSudoku {
 	}
 
 	private boolean hasConflict(int testRow, int testColumn, int candidate) {
-		int mid = (int) Math.sqrt(SIZE);
-		int lr = testRow / mid, cr = testColumn / mid;
-		for (int row = lr * mid; row < (lr + 1) * mid; row++) {
-			for (int column = cr * mid; column < (cr + 1) * mid; column++) {
-				if (board[row][column] == candidate) {
-					return true;
-				}
+		for (int column = 0; column < SIZE; column++) {
+			if(board[testRow][column]==candidate) {
+				return true;
 			}
 		}
 		return false;
@@ -104,8 +104,8 @@ public class SimulatedAnnealingFourSudoku {
 		return newBoard;
 	}
 
-	public SimulatedAnnealingFourSudoku newClone() {
-		return new SimulatedAnnealingFourSudoku(cloneBoard(), fixedTiles);
+	public SimulatedAnnealingTwoSudoku newClone() {
+		return new SimulatedAnnealingTwoSudoku(cloneBoard(), fixedTiles);
 	}
 
 }

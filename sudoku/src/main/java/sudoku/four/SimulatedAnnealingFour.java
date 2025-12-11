@@ -11,7 +11,7 @@ public class SimulatedAnnealingFour {
 		SimulatedAnnealingFourSudoku best = currentSolution.newClone();
 		while (temperature > 1) {
 			SimulatedAnnealingFourSudoku newSolution = currentSolution.newClone();
-			newSolution.swap(RANDOM.nextInt(4), RANDOM.nextInt(4));
+			newSolution.swap();
 			int currentCost = currentSolution.costFunction();
 			int newCost = newSolution.costFunction();
 			if (acceptanceProbability(currentCost, newCost, temperature) > RANDOM.nextDouble()) {
