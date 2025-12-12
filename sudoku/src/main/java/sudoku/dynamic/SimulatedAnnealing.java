@@ -1,11 +1,11 @@
-package sudoku;
+package sudoku.dynamic;
 
 import java.util.Random;
 
 public class SimulatedAnnealing {
 	private static final Random RANDOM = new Random();
-	private float cooling = 0.0000009f;
-	private double temperature = 1.5d;
+	private float cooling = 0.000009f;
+	private double temperature = 30000d;
 
 	public SimulatedAnnealingSudoku simulate(SimulatedAnnealingSudoku currentSolution) {
 		SimulatedAnnealingSudoku best = currentSolution.newClone();

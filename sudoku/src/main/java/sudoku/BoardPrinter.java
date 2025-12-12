@@ -5,6 +5,7 @@ public class BoardPrinter {
 		for (int column[] : board) {
 			for (int row : column) {
 				System.out.print(row);
+				System.out.print("	" );
 			}
 			System.out.println();
 		}

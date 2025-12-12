@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import sudoku.BoardPrinter;
-import sudoku.SimulatedAnnealing;
-import sudoku.SimulatedAnnealingSudoku;
+import sudoku.SimulatedAnnealingNine;
+import sudoku.SimulatedAnnealingSudokuNine;
 
 public class SimulateAnnealingSudokuTest {
 
@@ -20,9 +20,9 @@ public class SimulateAnnealingSudokuTest {
 			StringBuilder response = new StringBuilder();
 			String problem = BoardPrinter.asStringRow(board);
 			long ini = System.currentTimeMillis();
-			SimulatedAnnealingSudoku sudoku = new SimulatedAnnealingSudoku(board);
-			SimulatedAnnealing annealing = new SimulatedAnnealing();
-			SimulatedAnnealingSudoku best = annealing.simulate(sudoku);
+			SimulatedAnnealingSudokuNine sudoku = new SimulatedAnnealingSudokuNine(board);
+			SimulatedAnnealingNine annealing = new SimulatedAnnealingNine();
+			SimulatedAnnealingSudokuNine best = annealing.simulate(sudoku);
 			long end = System.currentTimeMillis();
 			response.append("\n");
 			response.append(problem);
@@ -44,9 +44,9 @@ public class SimulateAnnealingSudokuTest {
 			StringBuilder response = new StringBuilder();
 			String problem = BoardPrinter.asStringRow(board);
 			long ini = System.currentTimeMillis();
-			SimulatedAnnealingSudoku sudoku = new SimulatedAnnealingSudoku(board);
-			SimulatedAnnealing annealing = new SimulatedAnnealing();
-			SimulatedAnnealingSudoku best = annealing.simulate(sudoku);
+			SimulatedAnnealingSudokuNine sudoku = new SimulatedAnnealingSudokuNine(board);
+			SimulatedAnnealingNine annealing = new SimulatedAnnealingNine();
+			SimulatedAnnealingSudokuNine best = annealing.simulate(sudoku);
 			long end = System.currentTimeMillis();
 			response.append(problem);
 			response.append(",	");

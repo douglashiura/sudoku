@@ -2,16 +2,16 @@ package sudoku;
 
 import java.util.Random;
 
-public class SimulatedAnnealingSudoku {
+public class SimulatedAnnealingSudokuNine {
 	private static final Random RANDOM = new Random();
 	public int[][] board;
 	public boolean[][] fixedTiles;
 	private final static int SIZE=9;
-	public SimulatedAnnealingSudoku(int[][] input) {
+	public SimulatedAnnealingSudokuNine(int[][] input) {
 		board = input;
 		startCandidates();
 	}
-	private  SimulatedAnnealingSudoku(int[][] cloneBoard, boolean[][] fixed) {
+	private  SimulatedAnnealingSudokuNine(int[][] cloneBoard, boolean[][] fixed) {
 		this.board = cloneBoard;
 		this.fixedTiles = fixed;
 	}
@@ -102,8 +102,8 @@ public class SimulatedAnnealingSudoku {
 		return newBoard;
 	}
 
-	public SimulatedAnnealingSudoku newClone() {
-		return new SimulatedAnnealingSudoku(cloneBoard(), fixedTiles);
+	public SimulatedAnnealingSudokuNine newClone() {
+		return new SimulatedAnnealingSudokuNine(cloneBoard(), fixedTiles);
 	}
 
 }
